@@ -35,13 +35,12 @@ app.post('/api/send-email', (req, res) => {
     text,
   };
   const corsOptions = {
-    origin: 'https://your-frontend-name.vercel.app', // Replace with your frontend Vercel URL
+    origin: 'https://email-frontend-nine.vercel.app/', 
   };
   
-  app.use(cors(corsOptions)); // Apply the CORS middleware with the specified options
+  app.use(cors(corsOptions)); 
   
 
-  // Send email using nodemailer
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return res.status(500).json({ message: 'Error sending email', error });
@@ -50,5 +49,4 @@ app.post('/api/send-email', (req, res) => {
   });
 });
 
-// Vercel automatically invokes the app when requests are made, so we don't need to use app.listen() here.
 module.exports = app;
