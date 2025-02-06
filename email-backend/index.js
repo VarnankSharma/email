@@ -1,23 +1,27 @@
-require('dotenv').config();
-const express = require('express'); 
-const nodemailer = require('nodemailer'); 
-const cors = require('cors'); 
+                                                                         
+require('dotenv').config();                                                                          
+const express = require('express');                                                                          
+const nodemailer = require('nodemailer');                                                                         
+const cors = require('cors');                                                                          
 
+                                                                         
 const app = express();
 const port = 3000;
 
-app.use(cors()); 
+                                                                         
+app.use(cors());                                                                          
 
+                                                                         
 app.use(express.json());
 
+                                                                         
 const transporter = nodemailer.createTransport({
-  service: 'gmail', 
+  service: 'gmail',                                                                          
   auth: {
-    user: process.env.EMAIL_USER, 
-    pass: process.env.EMAIL_PASSWORD, 
+    user: process.env.EMAIL_USER,                                                                          
+    pass: process.env.EMAIL_PASSWORD,                                                                          
   },
 });
-
 app.post('/send-email', (req, res) => {
   const { to, subject, text } = req.body; 
 
@@ -26,10 +30,10 @@ app.post('/send-email', (req, res) => {
   }
 
   const mailOptions = {
-    from: process.env.EMAIL_USER, 
-    to,                           
-    subject,                      
-    text,                         
+    from: process.env.EMAIL_USER,                                                   
+    to,                                                                             
+    subject,                                                                        
+    text,                                                                           
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
