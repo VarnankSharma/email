@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -9,10 +8,11 @@ const App = () => {
   const [response, setResponse] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3000/send-email', {
+      // Replace 'http://localhost:3000' with your deployed backend URL
+      const res = await axios.post('https://your-backend-name.vercel.app/api/send-email', {
         to: recipient,
         subject: subject,
         text: message,
@@ -60,7 +60,7 @@ const App = () => {
         <button type="submit">Send Email</button>
       </form>
 
-      {response && <p>{response}</p>} {}
+      {response && <p>{response}</p>}
     </div>
   );
 };
