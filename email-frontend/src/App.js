@@ -12,7 +12,7 @@ const App = () => {
 
     try {
       // Replace 'http://localhost:3000' with your deployed backend URL
-      const res = await axios.post('https://your-backend-name.vercel.app/api/send-email', {
+      const res = await axios.post('https://email-backend-ecru.vercel.app/api/send-email', {
         to: recipient,
         subject: subject,
         text: message,
